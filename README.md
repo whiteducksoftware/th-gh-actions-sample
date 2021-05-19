@@ -1,7 +1,12 @@
 # GitHub Actions sample repository
 
+## Instructions
+
+- Fork the repository to your own GitHub account
+
 ## Prerequisites
 
+- [Azure CLI](https://docs.microsoft.com/de-de/cli/azure/install-azure-cli?WT.mc_id=AZ-MVP-5003203)
 - [Azure Function CLI](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash&WT.mc_id=AZ-MVP-5003203#install-the-azure-functions-core-tools)
 
 ## Scaffolding
