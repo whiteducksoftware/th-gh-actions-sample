@@ -41,9 +41,13 @@ jobs:
     needs: build
     steps:
     
+    - name: Display structure of downloaded files
+      run: ls -R
+    
     - uses: actions/download-artifact@v2
       with:
         name: function
+        path: ./dist
     
     - name: Display structure of downloaded files
       run: ls -R
