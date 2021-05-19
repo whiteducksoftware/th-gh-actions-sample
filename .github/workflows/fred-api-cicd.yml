@@ -33,5 +33,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: function
-        path: './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+        path: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
         if-no-files-found: error
