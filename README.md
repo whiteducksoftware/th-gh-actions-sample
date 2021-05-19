@@ -10,7 +10,7 @@
 - Select the `.github/workflows/fred-api-cicd.yml` workflow and run it using the `Run workflow` button. (See: [Running a workflow on GitHub](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow#running-a-workflow-on-github))
 - After the workflow run you can test the deployment by calling the following URL: `https://<INITALS>-fredapi-func-dev.azurewebsites.net/api/SayHello?name=<YOURNAME>`
 
-## Scaffolding
+## Bonus: Scaffolding the function and infrastructure
 
 This section contains information on how we have created the sample.
 
