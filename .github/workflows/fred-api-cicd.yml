@@ -2,7 +2,6 @@ on:
   push:
     paths: 
       - './FredApi'
-      - './.github/workflows/${{ env.GITHUB_WORKFLOW }}'
     branches:
       - main
   workflow_dispatch:
@@ -36,3 +35,14 @@ jobs:
         name: function
         path: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
         if-no-files-found: error
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Run Azure Functions Action'
+      uses: Azure/functions-action@v1
+      with:
+        app-name: 'fredapi7485'
+        slot-name: 'production'
+        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+        publish-profile: ${{ secrets.PUBLISHSETTINGS }}
