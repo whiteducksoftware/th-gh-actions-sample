@@ -41,21 +41,13 @@ jobs:
     needs: build
     steps:
     
-    - name: Display structure of downloaded files
-      run: ls -R
-    
     - uses: actions/download-artifact@v2
       with:
         name: function
-        path: ./dist
-    
-    - name: Display structure of downloaded files
-      run: ls -R
       
     - name: 'Run Azure Functions Action'
       uses: Azure/functions-action@v1
       with:
         app-name: 'fredapi7485'
-        slot-name: 'production'
-        package: './function.zip'
+        package: './'
         publish-profile: ${{ secrets.PUBLISHSETTINGS }}
