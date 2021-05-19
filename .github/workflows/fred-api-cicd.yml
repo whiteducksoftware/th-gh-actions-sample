@@ -2,6 +2,7 @@ on:
   push:
     paths: 
       - './FredApi'
+      - './.github/workflows/${{ env.GITHUB_WORKFLOW }}'
     branches:
       - main
   workflow_dispatch:
