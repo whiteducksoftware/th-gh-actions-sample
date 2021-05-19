@@ -1,16 +1,14 @@
-env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: './src/FredApi'
-  DOTNET_VERSION: '3.1.x'
-
 on:
   push:
     paths: 
-      - '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+      - './src/FredApi'
     branches:
       - main
   workflow_dispatch:
   
-
+env:
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './src/FredApi'
+  DOTNET_VERSION: '3.1.x'
 
 jobs:
   build:
