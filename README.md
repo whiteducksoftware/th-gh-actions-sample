@@ -3,6 +3,7 @@
 ## Instructions
 
 - Fork the repository to your own GitHub account
+- https://<INITALS>-fredapi-func-dev.azurewebsites.net/api/SayHello?name=<YOURNAME>
 
 ## Prerequisites
 
@@ -32,32 +33,38 @@ This section contains information how we have created the sample.
 
 The following script creates a resource group with a storage account and an azure function app
 
-```bash
-# Function app and storage account names must be unique.
+```powershell
+    $initials = 'mbr'
+    $storageAccountName = '{0}0fredapi0dev0stac' -f $initials
+    $functionappname = '{0}-fredapi-func-dev' -f $initials
+    $functionAppPlanName = '{0}-fredapi-asp-dev' -f $initials
+    $resourceGroupName = 'rg-{0}-fredapi-dev' -f $initials
 
-storageName=fredstorage$RANDOM
-functionAppName=fredapi$RANDOM
-region=germanywestcentral
-resourceGroupName=rg-fh-gh-sample
+    # Create a resource group.
+    az group create `
+      --name $resourceGroupName `
+      --location $region
 
-# Create a resource group.
+    # Create an Azure storage account in the resource group.
+    az storage account create `
+      --name $storageAccountName `
+      --location $region `
+      --resource-group $resourceGroupName `
+      --sku Standard_LRS
 
-az group create --name $resourceGroupName --location $region
+    # Create an appservice plan
+    az appservice plan create `
+      --name $functionAppPlanName `
+      --resource-group $resourceGroupName `
+      --location $region `
+      --sku B1
 
-# Create an Azure storage account in the resource group.
-
-az storage account create \
- --name $storageName \
- --location $region \
- --resource-group $resourceGroupName \
- --sku Standard_LRS
-
-# Create a serverless function app in the resource group.
-
-az functionapp create \
- --name $functionAppName \
- --storage-account $storageName \
- --consumption-plan-location $region \
- --resource-group $resourceGroupName \
- --functions-version 2
+    # Create a function app in the resource group.
+    az functionapp create `
+        --name $functionAppName `
+        --plan $functionAppPlanName `
+        --storage-account $storageAccountName `
+        --resource-group $resourceGroupName `
+        --disable-app-insights `
+        --functions-version 3
 ```
